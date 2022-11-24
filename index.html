@@ -1,122 +1,149 @@
 <!DOCTYPE html>
-<html>
-  <head> 
-    <style>
-      .img-container {
-          margin: 20px auto;
-          width: 40%;
-      }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merve Çelik BLM305 · GitHub Pages</title>
+ 
+    <style type="text/css">
+        *{
+    /* Change your font family */
+    font-family: sans-serif;
+}
 
-      .btn-container {
-          text-align: center;
-      }
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.glass {
+    background: linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgb(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) ;
+}
 
-      img {
-          height: 400px;
-          display: block;
-          margin: auto;
-          padding-bottom: 20px;
-      }
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
 
-      button {
-          outline: none;
-          padding: 12px;
-          border: none;
-          background-color: rgb(25, 121, 211);
-          border-radius: 8px;
-          color: white;
-          cursor: pointer;
-      }
-  </style>
-  </head>
-  <body>
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
 
-     <br />
-    <!-- <img id="img" height="150" /> -- -->
-    <img id="img" src="1.png" alt="" class="imageTag">
-    <div class="btn-container">
-        <button onclick="previous()">Previous</button>
-        <button onclick="next()">Next</button>
-        <button onclick="stop()">Stop</button>
-        <button onclick="start()">Start</button>
-        <button onclick="pause()">Pause</button>
-    </div>
-    <br />
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+#suggest {
+    margin-top: 35px;
+    color: #ccc;
+}
+.logo{
    
-  </body>
+        vertical-align: middle;
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+      
+}
+    </style>
+</head>
+<body>
+    <h1><a href="/" class="logo">
+        <img width="100" height="100" class="logo" title="" alt="" src="1666983975947.jpg">
+      </a>Merve Çelik</h1>
+    <p>
+         There will be access for Classworks(CW), Homeworks(HW) and Projects of BLM305 class.
+      </p>
+    <table class="content-table glass">
+        <thead>
+          <tr class="active-row glass">
+            <th>Classwork</th>
+            <th>Name</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="active-row glass"  >
+            <td>Class Work 1</td>
+            <td> <a href="https://mervecelik11.github.io/source/work/C.html"> Browser Tools </a></td>      
+          </tr>
+          <tr class="active-row glass"  >
+            <td>Class Work 2</td>
+            <td> <a href="https://mervecelik11.github.io/source/work/Counting.html"> IBAN Verification </a> </td>      
+          </tr>
+          <tr class="active-row glass"  >
+            <td>Class Work 3</td>
+            <td> <a href="https://mervecelik11.github.io/source/work/ObjectList.html"> Text to Objects </a></td>      
+          </tr>
+          <tr class="active-row glass"  >
+            <td>Class Work 4</td>
+            <td>  <a href="https://mervecelik11.github.io/source/work/Inspector.html">Object Inspector </a></td>      
+          </tr>
+          <tr class="active-row glass"  >
+            <td>Class Work 5</td>
+            <td>  <a href="https://mervecelik11.github.io/source/work/cw5.html">Promises </a></td>      
+          </tr>
+          <tr class="active-row glass"  >
+            <td>Class Work 6</td>
+            <td>  <a href="https://mervecelik11.github.io/source/work/cw6.html">Event Listeners </a></td>      
+          </tr>
+         
+        </tbody>s
+      </table>
 
-  <script>
-    let resimsayisi = 9;
-    let index = 1;
-    let setTimeoutreturn;
-    let setTimeOutWorking = false; // setTimeout fonk. calisip calismadigini kontrol eden degisken
-    let img = document.querySelector("#img");
-    function start() {
-      if (setTimeOutWorking) return;
-      setTimeoutreturn = setTimeout(guncelle, 250); // setTimeout ile 250 msec sonra guncelle calistirir.
-    
-      // myTimeout atimin sonsuz ilerleyisini durdurabilmem icin kullandigim kontrol degiskeni.
-      setTimeOutWorking = true;
-    }
-
-    function guncelle() {
-      fetch('https://github.com/mervecelik11/HW3/tree/main/HW3/'+index + ".png")
-        .then((response) => response.blob())
-        .then((imageBlob) => {
-          var urlCreator = window.URL || window.webkitURL;
-          var myObject = urlCreator.createObjectURL(imageBlob);
-          img.src = myObject;
-        });
-
-      index = (index % resimsayisi) + 1; // butun gorselleri sirayla indexte tutacagim.
-      setTimeOutWorking = false;
-      console.log(index);
-     
-      start();
-    }
-    
-    start();
-
-    let images = [
-            '1.jpg',
-            '2.png',
-            '3.png',
-            '4.png',
-            '5.png',
-            '6.png',
-            '7.png',
-            '8.png',
-            '9.png'
-            
-        ];
-        let imageTag = document.querySelector('.imageTag');
-        let i = 0;
-
-
-        function next() {
-            if (i >= images.length - 1) {
-                return false;
-            }
-            i++;
-            imageTag.setAttribute('src', images[i]);
-        }
-        function previous() {
-            if (i <= 0) {
-                return false;
-            }
-            i--;
-            imageTag.setAttribute('src', images[i]);
-        }
-        function pause() {
-          if (i >= images.length - 1) {
-                return false;
-            }
-            i=i-0;
-            
-            imageTag.setAttribute('src',images[i]);
+    <table class="content-table glass">
+        <thead>
+            <tr class="active-row glass">
+              <th>Homework</th>
+              <th>Name</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="active-row glass"  >
+                <td>Homework 1</td>
+                <td>  <a href="https://mervecelik11.github.io/source/work/chap4.html"> Array Methods </a></td>      
+            </tr>
+            <tr class="active-row glass"  >
+                <td>Homework 2</td>
+                <td>Organize Your Private Repo</td>      
+            </tr>
+                  <td>Homework 3</td>
+                <td>  <a href="https://mervecelik11.github.io/source/work/HW3/index.html"> Animation </a></td>      
+            </tr>
         
-        }
 
-  </script>
+          </tbody>
+    </table>
+
+    <div id="suggest">
+
+        <a href="https://www.linkedin.com/in/merve-celik-811791200/">LinkedIn</a> —
+        <a href="https://github.com/mervecelik11/">GitHub</a>
+      </div>
+</body>
+
 </html>
-
